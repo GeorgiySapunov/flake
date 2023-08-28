@@ -53,6 +53,40 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".zshrc".source = dotfiles/zsh/.zshrc;
+    ".config/zsh/aliases.zsh".source = dotfiles/zsh/.config/zsh/aliases.zsh;
+    ".config/zsh/exports.zsh".source = dotfiles/zsh/.config/zsh/exports.zsh;
+    ".config/zsh/.zshrc".source = dotfiles/zsh/.config/zsh/.zshrc;
+
+    ".config/mpv".source = dotfiles/mpv;
+  };
+
+  home.file = {
+    ".config/wget/wgetrc".text = ''
+       hsts-file=~/.cache/wget-hsts
+     '';
+
+    # ".local/bin/gitpullall".text = ''
+    #    #!/bin/sh
+
+    #    find . -maxdepth 1 -type d -exec \
+    #        test -e '{}/.git' ';' \
+    #        -print0 | xargs -I {} -0 \
+    #        git -C {} pull
+    #  '';
+
+    # ".local/bin/toggle_touchpad.sh".text = ''
+    #    #!/usr/bin/env bash
+
+    #    if [ $(gsettings get org.gnome.desktop.peripherals.touchpad send-events) == "'enabled'" ]; then
+    #        echo "Switching off"
+    #        gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled
+    #    else
+    #        echo "Switching on"
+    #        gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled
+    #    fi
+    #  '';
   };
 
   # You can also manage environment variables but you will have to manually

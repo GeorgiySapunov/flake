@@ -147,6 +147,7 @@
     gnome.gnome-software
     gnome-secrets
     newsflash
+    fragments
     #
     ffmpeg
     imagemagick
