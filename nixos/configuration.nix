@@ -152,6 +152,7 @@
     ffmpeg
     imagemagick
     mpv
+    syncplay
     libbluray
     libaacs
     inkscape
