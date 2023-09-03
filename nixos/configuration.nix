@@ -168,7 +168,7 @@
     osm-gps-map
     # python and emacs
     # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py]))
-    (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn pyicu isort pyflakes pytest nose pyvisa pyvisa-py])) # return tensorflow and debugpy if it's not broken
+    (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py])) # return tensorflow and debugpy if it's not broken
     nodePackages.pyright
     black
     emacsPackages.consult-flyspell
