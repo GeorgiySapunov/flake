@@ -27,7 +27,7 @@ plug "zap-zsh/vim"
 plug "zap-zsh/atmachine-prompt"
 # plug "zap-zsh/zap-prompt"
 plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
+# plug "zap-zsh/exa"
 plug "zsh-users/zsh-syntax-highlighting"
 
 # keybinds

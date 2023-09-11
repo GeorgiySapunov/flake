@@ -6,6 +6,12 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 alias nvimrc='nvim ~/.config/nvim/'
 # alias yay="paru"
 
+# eza
+alias ls='eza --group-directories-first --icons'
+alias ll='ls -lh'
+alias la='ll -a'
+alias tree='ll --tree --level=2'
+
 # alias lvim='nvim -u ~/.local/share/lunarvim/lvim/init.lua --cmd "set runtimepath+=~/.local/share/lunarvim/lvim"'
 
 # get fastest mirrors

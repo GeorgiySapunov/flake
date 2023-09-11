@@ -118,7 +118,7 @@
     moreutils
     fzf
     zoxide
-    exa
+    eza
     lm_sensors
     yt-dlp
     tldr
@@ -146,6 +146,7 @@
     gnome.gnome-tweaks
     gnome.gnome-software
     gnome-secrets
+    rhythmbox
     newsflash
     fragments
     #
@@ -159,6 +160,7 @@
     gimp
     libreoffice
     brave
+    librewolf
     tor-browser-bundle-bin
     blender
     telegram-desktop
@@ -169,7 +171,7 @@
     osm-gps-map
     # python and emacs
     # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py]))
-    (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py])) # return tensorflow and debugpy if it's not broken
+    (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf])) # return tensorflow and debugpy if it's not broken
     nodePackages.pyright
     black
     emacsPackages.consult-flyspell
