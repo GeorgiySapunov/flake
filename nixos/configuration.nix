@@ -135,6 +135,7 @@
     atool
     zip
     unzip
+    p7zip
     # for gnome
     gnomeExtensions.caffeine
     gnomeExtensions.tophat
@@ -152,6 +153,7 @@
     #
     ffmpeg
     imagemagick
+    libheif
     mpv
     syncplay
     libbluray
