@@ -138,7 +138,7 @@
     p7zip
     # for gnome
     gnomeExtensions.caffeine
-    gnomeExtensions.tophat
+    # gnomeExtensions.tophat
     gnomeExtensions.gsconnect
     gnomeExtensions.primary-input-on-lockscreen
     gnomeExtensions.removable-drive-menu
