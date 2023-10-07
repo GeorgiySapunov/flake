@@ -60,6 +60,7 @@
     ".config/zsh/.zshrc".source = dotfiles/zsh/.config/zsh/.zshrc;
 
     ".config/mpv".source = dotfiles/mpv;
+    ".config/zathura".source = dotfiles/zathura;
   };
 
   home.file = {
