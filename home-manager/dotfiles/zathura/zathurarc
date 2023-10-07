@@ -14,4 +14,3 @@ map i recolor
 map p print
 map g goto top
 include catppuccin-macchiato
-set recolor

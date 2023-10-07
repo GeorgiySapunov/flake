@@ -179,6 +179,8 @@
     black
     emacsPackages.consult-flyspell
     emacsPackages.vterm
+    emacsPackages.pdf-tools
+    emacsPackages.org-pdftools
     # libgccjit
     # for doom emacs
     fd
