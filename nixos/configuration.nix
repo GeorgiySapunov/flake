@@ -43,7 +43,7 @@
     LC_MONETARY = "en_US.UTF-8";
     LC_NAME = "en_US.UTF-8";
     LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
@@ -124,6 +124,7 @@
     tldr
     stow
     neofetch
+    outils
     #
     ncdu
     testdisk
@@ -144,6 +145,7 @@
     gnomeExtensions.removable-drive-menu
     gnomeExtensions.windownavigator
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.vitals
     gnome.gnome-tweaks
     gnome.gnome-software
     gnome-secrets
@@ -173,8 +175,8 @@
     gramps
     osm-gps-map
     # python and emacs
-    # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py]))
-    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf])) # return tensorflow and debugpy if it's not broken
+    # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf]))
+    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py])) # return tensorflow and debugpy if it's not broken
     nodePackages.pyright
     black
     emacsPackages.consult-flyspell
@@ -274,6 +276,8 @@
   };
 
   services.flatpak.enable = true;
+
+  services.emacs.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
