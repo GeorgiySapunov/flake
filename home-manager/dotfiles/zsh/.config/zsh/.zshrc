@@ -33,9 +33,10 @@ plug "zsh-users/zsh-syntax-highlighting"
 # keybinds
 bindkey '^ ' autosuggest-accept
 
-# Adds `~/.local/bin` to $PATH
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+# Add all directories in `~/.local/bin` to $PATH
+export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 export PATH="$XDG_DATA_HOME/neovim/bin":$PATH
+export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
 
 if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Visual Studio Dark+\"" 

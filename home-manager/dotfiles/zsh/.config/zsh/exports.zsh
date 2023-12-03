@@ -1,8 +1,9 @@
 #!/bin/sh
 # Default programs:
-export EDITOR="emacsclient -c -a 'emacs'"
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a 'emacs'"
 export TERMINAL="kgx"
-export BROWSER="brave"
+export BROWSER="librewolf"
 
 # export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
@@ -36,7 +37,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-export LESS=-R
+export LESS="R"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
 export LESS_TERMCAP_me="$(printf '%b' '[0m')"
@@ -45,8 +46,8 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
-export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
+export QT_QPA_PLATFORMTHEME="gtk2"        # Have QT use gtk2 theme.
+export MOZ_USE_XINPUT2=1                  # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 
 # input method
@@ -63,6 +64,7 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # MAN
 export MANPAGER='nvim +Man!'
+# export MANPAGER='emacsclient -t -q'
 export MANWIDTH=999
 
 # export XDG_CURRENT_DESKTOP="Wayland"

@@ -152,6 +152,7 @@
     rhythmbox
     newsflash
     fragments
+    networkmanagerapplet
     #
     ffmpeg
     imagemagick
@@ -176,13 +177,17 @@
     osm-gps-map
     # python and emacs
     # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf]))
-    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py])) # return tensorflow and debugpy if it's not broken
+    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf])) # return tensorflow and scikit-rf if it's not broken
     nodePackages.pyright
     black
+    conda
     emacsPackages.consult-flyspell
     emacsPackages.vterm
     emacsPackages.pdf-tools
     emacsPackages.org-pdftools
+    pandoc
+    languagetool
+    # emacsPackages.telega
     # libgccjit
     # for doom emacs
     fd
@@ -201,6 +206,8 @@
     # LaTeX
     texlive.combined.scheme-full
     zathura
+    # # ai
+    ollama
  ];
 
 
@@ -276,10 +283,33 @@
   };
 
   services.flatpak.enable = true;
+  # sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 
   services.emacs.enable = true;
 
+  virtualisation.docker.enable = true;
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # load `lib` into namespace at the file head with `{ config, pkgs, lib, ... }:`
+  nix.settings = {
+    # substituters = lib.mkForce [
+    substituters = [
+    "https://mirrors.ustc.edu.cn/nix-channels/store"
+    "https://mirror.sjtu.edu.cn/nix-channels/store"
+    # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=30"
+    # "https://mirrors.ustc.edu.cn/nix-channels/store"
+    # "https://nix-community.cachix.org"
+    ];
+
+    # trusted-users = ["root" "@wheel"];
+    # # List of binary cache URLs that non-root users can use
+    # trusted-substituters = [
+    # ];
+    # trusted-public-keys = [
+    #   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    # ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -287,6 +317,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
