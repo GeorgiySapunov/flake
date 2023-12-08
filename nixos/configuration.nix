@@ -152,6 +152,11 @@
     rhythmbox
     newsflash
     fragments
+    qbittorrent
+    plots
+    junction
+    metadata-cleaner
+    mousai
     networkmanagerapplet
     #
     ffmpeg
@@ -185,11 +190,10 @@
     emacsPackages.vterm
     emacsPackages.pdf-tools
     emacsPackages.org-pdftools
+    # emacsPackages.telega
     pandoc
     languagetool
-    # emacsPackages.telega
-    # libgccjit
-    # for doom emacs
+    zotero
     fd
     ripgrep
     # for geary
@@ -206,6 +210,7 @@
     # LaTeX
     texlive.combined.scheme-full
     zathura
+    pdftk # to work with pdf
     # # ai
     ollama
  ];
