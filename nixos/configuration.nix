@@ -64,7 +64,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
@@ -151,7 +151,6 @@
     gnome-secrets
     rhythmbox
     newsflash
-    fragments
     qbittorrent
     plots
     junction
@@ -177,12 +176,14 @@
     telegram-desktop
     anki
     system-config-printer
+    remmina
+    okular
     # for gramps
     gramps
     osm-gps-map
     # python and emacs
     # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf]))
-    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf])) # return tensorflow and scikit-rf if it's not broken
+    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf pyfiglet rich])) # return tensorflow and scikit-rf if it's not broken
     nodePackages.pyright
     black
     conda
