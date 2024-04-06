@@ -31,6 +31,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
+  # time.timeZone = "Europe/Moscow";
   time.timeZone = "Asia/Shanghai";
 
   # Select internationalisation properties.
@@ -56,9 +57,9 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -146,17 +147,22 @@
     gnomeExtensions.windownavigator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vitals
+    gnomeExtensions.color-picker
     gnome.gnome-tweaks
     gnome.gnome-software
+    gnome.eog
+    gnome.gnome-boxes
     gnome-secrets
+    keepassxc
+    deja-dup
     rhythmbox
     newsflash
     qbittorrent
-    plots
     junction
     metadata-cleaner
-    mousai
-    networkmanagerapplet
+    mousai # Identify any songs in seconds
+    networkmanagerapplet # NetworkManager control applet for GNOME (nm-connection-editor)
+    usbutils # Tools for working with USB devices, such as lsusb
     #
     ffmpeg
     imagemagick
@@ -168,9 +174,10 @@
     libaacs
     inkscape
     gimp
-    libreoffice
+    # libreoffice
     brave
     librewolf
+    chromium
     tor-browser-bundle-bin
     blender
     telegram-desktop
@@ -178,15 +185,39 @@
     system-config-printer
     remmina
     okular
+    libsForQt5.kdenlive
+    glaxnimate # for kdenlive
     # for gramps
     gramps
-    osm-gps-map
-    # python and emacs
-    # (python3.withPackages(ps: with ps; [ pandas requests matplotlib scikit-learn tensorflow pyicu debugpy isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf]))
-    (python3.withPackages(ps: with ps; [ pandas requests matplotlib seaborn scikit-learn debugpy pyicu isort pyflakes pytest nose pyvisa pyvisa-py scikit-rf pyfiglet rich])) # return tensorflow and scikit-rf if it's not broken
-    nodePackages.pyright
-    black
-    conda
+    osm-gps-map # Used to show maps in the geography view (Gramps)
+    (python3.withPackages(ps: with ps; [
+      pandas
+      matplotlib
+      seaborn
+      scikit-learn
+      tensorflow
+      pyyaml
+      pyvisa pyvisa-py
+      scikit-rf
+      pyfiglet
+      rich # Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+      click # Command Line Interface Creation Kit
+      icecream # never use print() to debug again.
+      setuptools # Packaging and distributing projects
+      hydra-core
+      requests
+      tkinter
+      pyicu # Improves localised sorting in Gramps
+      debugpy # (DAP for doom emacs)
+      isort # py-isort requires isort (doom emacs)
+      pyflakes # pyimport requires Python’s module pyflakes (doom emacs)
+      pytest nose # run tests (doom emacs)
+      # jupyter
+      # openai-whisper
+    ]))
+    pipreqs # allows you to automatically generate the requirements.txt file for your project
+    nodePackages.pyright # LSP integration
+    black # auto-format
     emacsPackages.consult-flyspell
     emacsPackages.vterm
     emacsPackages.pdf-tools
@@ -204,18 +235,23 @@
     aspellDicts.en-computers
     aspellDicts.ru
     aspellDicts.fr
+    evolution
+    thunderbird
     # Chinese and Japanese
     ibus-engines.libpinyin
     ibus-engines.rime
-    ibus-engines.mozc
+    # ibus-engines.mozc
     # LaTeX
     texlive.combined.scheme-full
     zathura
     pdftk # to work with pdf
+    poppler_utils # A PDF rendering library
     # # ai
     ollama
+    openai-whisper
+    tesseract
+    ocrfeeder
  ];
-
 
   i18n.inputMethod = {
     # enabled = "fcitx5";
@@ -229,7 +265,7 @@
     ibus.engines = with pkgs.ibus-engines; [
       libpinyin
       rime
-      mozc
+      # mozc
     ];
   };
 
@@ -246,6 +282,15 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  services = {
+    syncthing = {
+        enable = true;
+        user = "georgiy";
+        dataDir = "/home/georgiy/Documents";    # Default folder for new synced folders
+        configDir = "/home/georgiy/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
+      };
+  };
+
   # zsh
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -259,6 +304,32 @@
 
   programs.kdeconnect.enable = true;
 
+  # Using bindfs for font support in flatpack
+  system.fsPackages = [ pkgs.bindfs ];
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+    };
+    aggregatedIcons = pkgs.buildEnv {
+      name = "system-icons";
+      paths = with pkgs; [
+        #libsForQt5.breeze-qt5  # for plasma
+        gnome.gnome-themes-extra
+      ];
+      pathsToLink = [ "/share/icons" ];
+    };
+    aggregatedFonts = pkgs.buildEnv {
+      name = "system-fonts";
+      paths = config.fonts.packages;
+      pathsToLink = [ "/share/fonts" ];
+    };
+  in {
+    "/usr/share/icons" = mkRoSymBind "${aggregatedIcons}/share/icons";
+    "/usr/local/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
+  };
+
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
@@ -268,6 +339,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       liberation_ttf
+      open-sans
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
   };
@@ -295,6 +367,14 @@
 
   virtualisation.docker.enable = true;
 
+  system.activationScripts.diff = {
+    supportsDryActivation = true;
+    text = ''
+      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff \
+          /run/current-system "$systemConfig"
+    '';
+  };
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # load `lib` into namespace at the file head with `{ config, pkgs, lib, ... }:`
@@ -303,9 +383,9 @@
     substituters = [
     "https://mirrors.ustc.edu.cn/nix-channels/store"
     "https://mirror.sjtu.edu.cn/nix-channels/store"
-    # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=30"
-    # "https://mirrors.ustc.edu.cn/nix-channels/store"
-    # "https://nix-community.cachix.org"
+    "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=30"
+    "https://mirrors.ustc.edu.cn/nix-channels/store"
+    "https://nix-community.cachix.org"
     ];
 
     # trusted-users = ["root" "@wheel"];
