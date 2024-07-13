@@ -126,6 +126,13 @@
     stow
     neofetch
     outils
+    yazi
+    ueberzugpp
+    poppler
+    ffmpegthumbnailer
+    jq
+    unar
+    file
     #
     ncdu
     testdisk
@@ -148,13 +155,20 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vitals
     gnomeExtensions.color-picker
-    gnome.gnome-tweaks
+    gnomeExtensions.window-calls # for NormCap
+    # gnomeExtensions.huawei-wmi-controls
+    # gnomeExtensions.overview-hover
+    # gnomeExtensions.mouse-follows-focus
+    # gnomeExtensions.transcodeappsearch
+    # gnomeExtensions.happy-appy-hotkey
+    gnomeExtensions.switcher
+    gnome-tweaks
     gnome.gnome-software
-    gnome.eog
+    eog
     gnome.gnome-boxes
     gnome-secrets
     keepassxc
-    deja-dup
+    # deja-dup
     rhythmbox
     newsflash
     qbittorrent
@@ -179,9 +193,10 @@
     librewolf
     chromium
     tor-browser-bundle-bin
+    qucs-s # circuit simulator
     blender
-    telegram-desktop
-    anki
+    # telegram-desktop
+    # anki
     system-config-printer
     remmina
     okular
@@ -190,33 +205,36 @@
     # for gramps
     gramps
     osm-gps-map # Used to show maps in the geography view (Gramps)
-    (python3.withPackages(ps: with ps; [
+    (python312.withPackages(ps: with ps; [
       pandas
       matplotlib
       seaborn
       scikit-learn
-      tensorflow
+      # tensorflow
       pyyaml
       pyvisa pyvisa-py
       scikit-rf
       pyfiglet
       rich # Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+      termcolor
       click # Command Line Interface Creation Kit
       icecream # never use print() to debug again.
       setuptools # Packaging and distributing projects
-      hydra-core
+      # hydra-core
       requests
       tkinter
       pyicu # Improves localised sorting in Gramps
       debugpy # (DAP for doom emacs)
       isort # py-isort requires isort (doom emacs)
       pyflakes # pyimport requires Python’s module pyflakes (doom emacs)
-      pytest nose # run tests (doom emacs)
+      pytest # run tests (doom emacs)
+      pythonnet # for Thorlabs K-cube
+      # nose # run tests (doom emacs)
       # jupyter
       # openai-whisper
     ]))
     pipreqs # allows you to automatically generate the requirements.txt file for your project
-    nodePackages.pyright # LSP integration
+    pyright # LSP integration
     black # auto-format
     emacsPackages.consult-flyspell
     emacsPackages.vterm
@@ -235,7 +253,7 @@
     aspellDicts.en-computers
     aspellDicts.ru
     aspellDicts.fr
-    evolution
+    # evolution
     thunderbird
     # Chinese and Japanese
     ibus-engines.libpinyin
@@ -265,7 +283,7 @@
     ibus.engines = with pkgs.ibus-engines; [
       libpinyin
       rime
-      # mozc
+      mozc
     ];
   };
 
@@ -316,7 +334,7 @@
       name = "system-icons";
       paths = with pkgs; [
         #libsForQt5.breeze-qt5  # for plasma
-        gnome.gnome-themes-extra
+        gnome-themes-extra
       ];
       pathsToLink = [ "/share/icons" ];
     };
