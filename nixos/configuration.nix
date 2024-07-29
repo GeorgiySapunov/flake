@@ -70,7 +70,6 @@
   services.avahi.openFirewall = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -166,7 +165,7 @@
     gnome.gnome-software
     eog
     gnome.gnome-boxes
-    gnome-secrets
+    # gnome-secrets
     keepassxc
     # deja-dup
     rhythmbox
@@ -268,7 +267,7 @@
     ollama
     openai-whisper
     tesseract
-    ocrfeeder
+    # ocrfeeder
  ];
 
   i18n.inputMethod = {
@@ -279,7 +278,8 @@
     # ];
 
     # 我现在用 ibus
-    enabled = "ibus";
+    enable = true;
+    type = "ibus";
     ibus.engines = with pkgs.ibus-engines; [
       libpinyin
       rime
