@@ -63,8 +63,8 @@ export TLDR_LINESIZE=20
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # MAN
-export MANPAGER='nvim +Man!'
-# export MANPAGER='emacsclient -t -q'
+# export MANPAGER='nvim +Man!'
+# export MANPAGER='emacsclient -t -q +Man!'
 export MANWIDTH=999
 
 # export XDG_CURRENT_DESKTOP="Wayland"

@@ -112,35 +112,36 @@
     wget
     git
     gnupg
-    gnumake
+    gnumake # make
     killall
     rsync
-    moreutils
+    moreutils # vidir
     fzf
-    zoxide
-    eza
-    lm_sensors
+    zoxide # Fast cd command that learns your habits
+    eza # Modern, maintained replacement for ls
+    lm_sensors # Tools for reading hardware sensors (sensors command)
     yt-dlp
     tldr
     stow
     neofetch
-    outils
+    outils # Port of OpenBSD-exclusive tools such as `calendar`, `vis`, and `signify`
     yazi
-    ueberzugpp
-    poppler
-    ffmpegthumbnailer
-    jq
-    unar
-    file
+    kitty
+    # ueberzugpp # for yazi
+    poppler # for yazi PDF rendering library
+    ffmpegthumbnailer # for yazi
+    jq # for yazi Lightweight and flexible command-line JSON processor
+    unar # Archive unpacker program
+    file # for yazi Program that shows the type of files
     #
-    ncdu
-    testdisk
+    ncdu # Disk usage analyzer with an ncurses interface
+    testdisk # Data recovery utilities
     htop
     btop
     # tmate
     # cmake
     # for archives
-    atool
+    atool # Archive command line helper
     zip
     unzip
     p7zip
@@ -162,16 +163,19 @@
     # gnomeExtensions.happy-appy-hotkey
     gnomeExtensions.switcher
     gnome-tweaks
-    gnome.gnome-software
-    eog
-    gnome.gnome-boxes
+    gnome-software
+    sushi # Quick previewer for Nautilus
+    turtle # Graphical interface for version control intended to run on gnome and nautilus
+    nautilus-open-any-terminal
+    eog # GNOME image viewer
+    # gnome-boxes
     # gnome-secrets
     keepassxc
     # deja-dup
     rhythmbox
     newsflash
     qbittorrent
-    junction
+    junction # Choose the application to open files and links
     metadata-cleaner
     mousai # Identify any songs in seconds
     networkmanagerapplet # NetworkManager control applet for GNOME (nm-connection-editor)
@@ -179,12 +183,12 @@
     #
     ffmpeg
     imagemagick
-    libheif
+    libheif # ISO/IEC 23008-12:2017 HEIF image file format decoder and encoder
     mpv
     vlc
     syncplay
     libbluray
-    libaacs
+    libaacs # Library to access AACS protected Blu-Ray disks
     inkscape
     gimp
     # libreoffice
@@ -197,10 +201,10 @@
     # telegram-desktop
     # anki
     system-config-printer
-    remmina
+    remmina # Remote desktop client written in GTK
     okular
     libsForQt5.kdenlive
-    glaxnimate # for kdenlive
+    glaxnimate # for kdenlive Simple vector animation program
     # for gramps
     gramps
     osm-gps-map # Used to show maps in the geography view (Gramps)
@@ -241,10 +245,10 @@
     emacsPackages.org-pdftools
     # emacsPackages.telega
     pandoc
-    languagetool
-    zotero
-    fd
-    ripgrep
+    languagetool # Grammar Checker
+    zotero # Collect, organize, cite, and share your research sources
+    fd # for doom emacs Simple, fast and user-friendly alternative to find
+    ripgrep # rg for doom emacs
     # for geary
     aspell
     aspellDicts.en
@@ -260,14 +264,18 @@
     # ibus-engines.mozc
     # LaTeX
     texlive.combined.scheme-full
-    zathura
+    zathura # Highly customizable and functional PDF viewer
     pdftk # to work with pdf
     poppler_utils # A PDF rendering library
+    axel # Console downloading program with some features for parallel connections for faster downloading
+    calibre # e-book reader
     # # ai
     ollama
-    openai-whisper
+    # openai-whisper
     tesseract
     # ocrfeeder
+    enscript # converts ASCII files to PostScript, HTML, or RTF
+    ghostscript
  ];
 
   i18n.inputMethod = {
@@ -354,7 +362,7 @@
       source-han-sans
       source-han-serif
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
       open-sans
@@ -374,7 +382,7 @@
       automatic = true;
       persistent = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 14d";
     };
   };
 
@@ -384,6 +392,7 @@
   services.emacs.enable = true;
 
   virtualisation.docker.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   system.activationScripts.diff = {
     supportsDryActivation = true;
