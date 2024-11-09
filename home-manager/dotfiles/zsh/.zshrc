@@ -25,11 +25,12 @@ plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
-plug "zap-zsh/atmachine-prompt"
+# plug "zap-zsh/atmachine-prompt"
 # plug "zap-zsh/zap-prompt"
 plug "zap-zsh/fzf"
 plug "zap-zsh/exa"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "wintermi/zsh-starship"
 
 # keybinds
 bindkey '^ ' autosuggest-accept

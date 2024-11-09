@@ -119,6 +119,7 @@
     fzf
     zoxide # Fast cd command that learns your habits
     eza # Modern, maintained replacement for ls
+    starship
     lm_sensors # Tools for reading hardware sensors (sensors command)
     yt-dlp
     tldr
@@ -197,7 +198,7 @@
     chromium
     tor-browser-bundle-bin
     qucs-s # circuit simulator
-    blender
+    # blender
     # telegram-desktop
     # anki
     system-config-printer
@@ -231,7 +232,7 @@
       isort # py-isort requires isort (doom emacs)
       pyflakes # pyimport requires Python’s module pyflakes (doom emacs)
       pytest # run tests (doom emacs)
-      pythonnet # for Thorlabs K-cube
+      # pythonnet # for Thorlabs K-cube
       # nose # run tests (doom emacs)
       # jupyter
       # openai-whisper
@@ -369,6 +370,11 @@
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
   };
+  # https://nixos.wiki/wiki/Fonts
+  # ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
+  # flatpak --user override --filesystem=$HOME/.local/share/fonts:ro
+  # flatpak --user override --filesystem=$HOME/.icons:ro
+  # flatpak --user override --filesystem=/nix/store:ro
 
   system.autoUpgrade = {
     enable = true;

@@ -58,6 +58,7 @@
     ".config/zsh/aliases.zsh".source = dotfiles/zsh/.config/zsh/aliases.zsh;
     ".config/zsh/exports.zsh".source = dotfiles/zsh/.config/zsh/exports.zsh;
     ".config/zsh/.zshrc".source = dotfiles/zsh/.config/zsh/.zshrc;
+    ".config/starship.toml".source = dotfiles/starship/.config/starship.toml;
 
     ".config/mpv".source = dotfiles/mpv;
     ".config/zathura".source = dotfiles/zathura;
